@@ -1,0 +1,23 @@
+{
+  "name": "webcrawler",
+  "version": "1.0.0",
+  "description": "A project for the boot.dev Learn HTTP course",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hjerting/webcrawler.git"
+  },
+  "author": "Jon Hjerting",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hjerting/webcrawler/issues"
+  },
+  "homepage": "https://github.com/hjerting/webcrawler#readme",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}
