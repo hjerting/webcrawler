@@ -1,3 +1,6 @@
+const fs = require("fs");
+const { stringify } = require("csv-stringify");
+
 function printReport(pages) {
     console.log("======");
     console.log("REPORT")
@@ -13,6 +16,19 @@ function printReport(pages) {
     console.log("==========");
 }
 
+function makeCSVFile(pages) {
+    const filename = "report.csv";
+    const writeableStream = fs.createWriteStream(filename);
+    const columns = ["URLs", "Link-count"];
+    const stringifier = stringify({ header: true, columns: columns })
+    const sortedPages = sortPages(pages);
+    for (const page of sortedPages) {
+        stringifier.write(page);
+    }
+    stringifier.pipe(writeableStream);
+    console.log(`Finished writing data to file '${filename}'.`);
+}
+
 function sortPages(pages) {
     const pagesArr = Object.entries(pages);
     return pagesArr.sort((x, y) => {
@@ -22,5 +38,6 @@ function sortPages(pages) {
 
 module.exports = {
     sortPages,
-    printReport
+    printReport,
+    makeCSVFile
 }
